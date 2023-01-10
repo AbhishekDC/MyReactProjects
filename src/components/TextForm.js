@@ -1,9 +1,22 @@
 import React,{useState} from 'react';
-
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown'
 export default function TextForm(props) {
     
     const [text, setText] = useState("Enter text here");
-    
+    let clr = "";
+    const dropDownSelect = (event)=>{
+      
+      if(event==="Yellow"){
+        clr="Yellow";
+      }else if(event==="Red"){
+        clr="Red";
+      }else{
+        clr="blue";
+      }
+      console.log(clr);
+    }
+
     const handleLowerCaseClick = ()=>{
       // console.log("Upper Case was Clicked");
       let lower = text.toLowerCase();
@@ -29,18 +42,17 @@ export default function TextForm(props) {
     <button className="btn btn-primary my-2" onClick={handleUpperCaseClick}>Convert to Upper Case</button>
     <button className='btn btn-secondary my-2 mx-2'onClick={handleLowerCaseClick}>Convert to LowerCase</button>
     
-<div className="btn-group">
-  <button type="button" className="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
-    Choose Color
-  </button>
-  <div className="dropdown-menu">
-    
-    <a className="dropdown-item text-danger" value="Red">Red</a>
-    <a className="dropdown-item text-primary" value="Blue">Blue</a>
-    
-    <a className="dropdown-item text-success" value="Green">Green</a>
-  </div>
-</div>
+    <DropdownButton
+      
+      title="Select Color"
+      id="dropdown-menu-align-right" 
+      onSelect={dropDownSelect}
+        >
+              <Dropdown.Item eventKey="Red" >Red</Dropdown.Item>
+              <Dropdown.Item eventKey="Yellow">Yellow</Dropdown.Item>
+              <Dropdown.Item eventKey="Blue">Blue</Dropdown.Item>
+              
+      </DropdownButton>
   </div>
 
     
@@ -49,7 +61,7 @@ export default function TextForm(props) {
       <p>{text.split(" ").length -1} words,{text.length} Character</p>
       <p>You will need almost {(text.split(" ").length -1)*0.45} minutes to read this text</p>
       <h3>Preview</h3>
-      <p>{text}</p>
+      this.clr=="Yellow" && <p className="text-success">{text}</p>
       </div>
     </div>
   )

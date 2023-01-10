@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
+import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
     <>
