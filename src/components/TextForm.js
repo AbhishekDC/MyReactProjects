@@ -9,18 +9,26 @@ export default function TextForm(props) {
       
       if(event==="Yellow"){
         clr="Yellow";
+        
       }else if(event==="Red"){
         clr="Red";
+        
       }else{
         clr="blue";
+        
       }
       console.log(clr);
+      
     }
 
     const handleLowerCaseClick = ()=>{
       // console.log("Upper Case was Clicked");
       let lower = text.toLowerCase();
       setText(lower);
+  }
+
+  const handleClearTextClick=()=>{
+    setText("");
   }
     const handleUpperCaseClick = ()=>{
         // console.log("Upper Case was Clicked");
@@ -41,6 +49,7 @@ export default function TextForm(props) {
     <textarea className="form-control" value ={text} id="exampleFormControlTextarea1" onChange={handleOnchange}   rows="8"></textarea>
     <button className="btn btn-primary my-2" onClick={handleUpperCaseClick}>Convert to Upper Case</button>
     <button className='btn btn-secondary my-2 mx-2'onClick={handleLowerCaseClick}>Convert to LowerCase</button>
+    <button className='btn btn-secondary my-2 mx-2'onClick={handleClearTextClick}>Clear Text</button>
     
     <DropdownButton
       
@@ -61,7 +70,7 @@ export default function TextForm(props) {
       <p>{text.split(" ").length -1} words,{text.length} Character</p>
       <p>You will need almost {(text.split(" ").length -1)*0.45} minutes to read this text</p>
       <h3>Preview</h3>
-      this.clr=="Yellow" && <p className="text-success">{text}</p>
+      {text}
       </div>
     </div>
   )
