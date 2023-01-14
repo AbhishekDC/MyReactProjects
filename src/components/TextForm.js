@@ -28,7 +28,7 @@ export default function TextForm(props) {
   }
 
   const handleClearTextClick=()=>{
-    setText("");
+    setText(" ");
   }
     const handleUpperCaseClick = ()=>{
         // console.log("Upper Case was Clicked");
@@ -42,11 +42,11 @@ export default function TextForm(props) {
     }
 
   return (
-    <div>
-        <h1>{props.heading}</h1>
+    <div className='container'>
+        <h1 style={{color:props.mode==='light'?'black':'white'}}>{props.heading}</h1>
       
   <div className="form-group">
-    <textarea className="form-control" value ={text} id="exampleFormControlTextarea1" onChange={handleOnchange}   rows="8"></textarea>
+    <textarea className="form-control" style={{backgroundColor:props.mode==='light'?'black':'white', color:props.mode==='light'?'white':'black'}} value ={text} id="exampleFormControlTextarea1" onChange={handleOnchange}   rows="8"></textarea>
     <button className="btn btn-primary my-2" onClick={handleUpperCaseClick}>Convert to Upper Case</button>
     <button className='btn btn-secondary my-2 mx-2'onClick={handleLowerCaseClick}>Convert to LowerCase</button>
     <button className='btn btn-secondary my-2 mx-2'onClick={handleClearTextClick}>Clear Text</button>
@@ -65,7 +65,7 @@ export default function TextForm(props) {
   </div>
 
     
-    <div className="container my-3">
+    <div className={`container my-2 text-${props.mode==='light'?'black':'white'}`}>
       <h1>Your Text Summary</h1>
       <p>{text.split(" ").length -1} words,{text.length} Character</p>
       <p>You will need almost {(text.split(" ").length -1)*0.45} minutes to read this text</p>
