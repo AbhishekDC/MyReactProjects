@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown'
+
 export default function TextForm(props) {
     
     const [text, setText] = useState("Enter text here");
@@ -25,15 +26,18 @@ export default function TextForm(props) {
       // console.log("Upper Case was Clicked");
       let lower = text.toLowerCase();
       setText(lower);
+      props.showAlert("Lowercase Converted","primary");
   }
 
   const handleClearTextClick=()=>{
     setText(" ");
+    props.showAlert("Text Cleared","danger");
   }
     const handleUpperCaseClick = ()=>{
         // console.log("Upper Case was Clicked");
         let upper = text.toUpperCase();
         setText(upper);
+        props.showAlert("Uppercase COnverted","warning");
     }
 
     const handleOnchange = (event)=>{
@@ -67,7 +71,7 @@ export default function TextForm(props) {
     
     <div className={`container my-2 text-${props.mode==='light'?'black':'white'}`}>
       <h1>Your Text Summary</h1>
-      <p>{text.split(" ").length -1} words,{text.length} Character</p>
+      <p>{text.trim().split(" ").length } words,{text.length} Character</p>
       <p>You will need almost {(text.split(" ").length -1)*0.45} minutes to read this text</p>
       <h3>Preview</h3>
       {text}
