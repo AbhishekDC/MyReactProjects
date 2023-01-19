@@ -16,10 +16,10 @@ import {
 
 function App() {
   
-  const [mode, setMode] = useState('dark');
+  const [mode, setMode] = useState('light');
 
   const [alert, setAlert] = useState();
-  const [themeStater, setThemeStater] = useState(true);
+  const [themeStater, setThemeStater] = useState(false);
 
   const modeSetter= (receivedMode)=>{
     setMode(receivedMode);
@@ -57,14 +57,18 @@ const toggleMode=()=>{
     <>
     <Router>
     <Navbar title="TextUtils2" mode={mode} toggleMode={toggleMode} themeStater={themeStater} modeSetter={modeSetter}/>
-    <Alert alert={alert}/>
+    <div style={{height:'13px'}}>
+        {/* <h2>Abhishek</h2> */}
+        <Alert alert={alert}/>
+      </div>
+    
     <div className="container my-5">
     <Switch>
           <Route exact path="/about">
-            <About />
+            <About mode={mode}/>
           </Route>
           <Route exact path="/">
-            <TextForm/>
+          <TextForm heading="Enter the Heading" mode={mode}/>
           </Route>
         </Switch>
     

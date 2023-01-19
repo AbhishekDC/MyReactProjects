@@ -8,6 +8,7 @@ function capitalizeFirstWord(word){
 
   return (
     props.alert && <div>
+      
        <div className={`alert alert-${props.alert.type} alert-dismissible fade show`} role="alert">
   <strong>{capitalizeFirstWord(props.alert.type)}</strong> : {props.alert.msg}
   

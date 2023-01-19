@@ -51,12 +51,12 @@ export default function TextForm(props) {
       
   <div className="form-group">
     <textarea className="form-control" style={{backgroundColor:props.mode==='light'?'black':'white', color:props.mode==='light'?'white':'black'}} value ={text} id="exampleFormControlTextarea1" onChange={handleOnchange}   rows="8"></textarea>
-    <button className="btn btn-primary my-2" onClick={handleUpperCaseClick}>Convert to Upper Case</button>
-    <button className='btn btn-secondary my-2 mx-2'onClick={handleLowerCaseClick}>Convert to LowerCase</button>
-    <button className='btn btn-secondary my-2 mx-2'onClick={handleClearTextClick}>Clear Text</button>
+    <button className="btn btn-primary my-2 mx-2" onClick={handleUpperCaseClick}>Convert to Upper Case</button>
+    <button className='btn btn-primary my-2 mx-2'onClick={handleLowerCaseClick}>Convert to LowerCase</button>
+    <button className='btn btn-primary my-2 mx-2'onClick={handleClearTextClick}>Clear Text</button>
     
     <DropdownButton
-      
+      className='btn btn-primary my-2 mx-2'
       title="Select Color"
       id="dropdown-menu-align-right" 
       onSelect={dropDownSelect}
@@ -71,10 +71,10 @@ export default function TextForm(props) {
     
     <div className={`container my-2 text-${props.mode==='light'?'black':'white'}`}>
       <h1>Your Text Summary</h1>
-      <p>{text.trim().split(" ").length } words,{text.length} Character</p>
-      <p>You will need almost {(text.split(" ").length -1)*0.45} minutes to read this text</p>
+      <p>{text.trim().split(" ").filter((element)=>{return element.length !== 0}).length } words,{text.length} Character</p>
+      <p>You will need almost {(text.split(" ").filter((element)=>{return element.length !== 0}).length )*0.45} minutes to read this text</p>
       <h3>Preview</h3>
-      {text}
+      <p>{text.length>0?text:"Nothing to preview"}</p>
       </div>
     </div>
   )
